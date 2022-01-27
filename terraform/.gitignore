@@ -1,0 +1,5 @@
+.terraformignore
+*.tfvars
+*.tfvars.json
+*.auto.tfvars
+*.auto.tfvars.json
