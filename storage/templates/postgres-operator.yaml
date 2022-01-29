@@ -1,0 +1,34 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: postgres-operator
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: storage-project
+
+  source:
+    repoURL: {{ .Values.postgresOperator.repoUrl }}
+    targetRevision: {{ .Values.postgresOperator.targetRevision }}
+    path: charts/postgres-operator
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: {{ .Values.postgresOperator.namespace }}
+
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
+      allowEmpty: false
+    syncOptions:
+    - Validate=true
+    - CreateNamespace=true
+    - PrunePropagationPolicy=foreground
+    - PruneLast=true
+    retry:
+      limit: 5
+      backoff:
+        duration: 30s
+        factor: 2
+        maxDuration: 3m

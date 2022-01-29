@@ -23,6 +23,12 @@ spec:
         value: {{ include "rookCeph.namespace" . }}
       - name: rookCeph.helmUrl
         value: {{ include "rookCeph.helmUrl" . }}
+      - name: postgresOperator.namespace
+        value: {{ include "postgresOperator.namespace" . }}
+      - name: postgresOperator.repoUrl
+        value: {{ include "postgresOperator.repoUrl" . }}
+      - name: postgresOperator.targetRevision
+        value: {{ include "postgresOperator.targetRevision" . }}
 
 
   destination:

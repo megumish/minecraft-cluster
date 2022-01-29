@@ -14,6 +14,15 @@
 {{- define "rookCeph.helmUrl" -}}
 {{- "https://charts.rook.io/release" -}}
 {{- end -}}
+{{- define "postgresOperator.namespace" -}}
+{{- "postgres" -}}
+{{- end -}}
+{{- define "postgresOperator.repoUrl" -}}
+{{- "https://github.com/zalando/postgres-operator" -}}
+{{- end -}}
+{{- define "postgresOperator.targetRevision" -}}
+{{- "v1.7.1" -}}
+{{- end -}}
 
 {{/* Project Rules */}}
 {{- define "deny.openNetworking" }}

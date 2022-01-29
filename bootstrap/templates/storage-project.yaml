@@ -10,12 +10,15 @@ spec:
   sourceRepos:
   - {{ $.Values.gitRepositoryUrl }}
   - {{ include "rookCeph.helmUrl" . }}
+  - {{ include "postgresOperator.repoUrl" . }}
 
   destinations:
   - namespace: {{ $.Values.argocd.namespace}}
     server: https://kubernetes.default.svc
   - namespace: {{ include "rookCeph.namespace" . }} 
     server: https://kubernetes.default.svc
+  - namespace: {{ include "postgresOperator.namespace" . }} 
+    server: https://kubernetes.default.svc"
 
   clusterResourceWhitelist:
   - group: '*'

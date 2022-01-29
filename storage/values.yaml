@@ -5,3 +5,7 @@ targetRevision: ""
 rookceph:
   namespace: ""
   helmUrl: ""
+postgresOperator:
+  namepsace: ""
+  repoUrl: ""
+  targetRevision: ""
