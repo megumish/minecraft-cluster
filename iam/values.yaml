@@ -3,4 +3,10 @@ argocd:
   namepsace: ""
 keycloak:
   namepsace: ""
+iam:
+  namespace: ""
+rookCeph:
+  namespace: ""
+postgresOperator:
+  namespace: ""
 targetRevision: ""

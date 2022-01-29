@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: iam
+  name: iam-storage
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
@@ -10,32 +10,21 @@ spec:
   source:
     repoURL: {{ $.Values.gitRepositoryUrl }}
     targetRevision: {{ $.Values.targetRevision }}
-    path: iam
+    path: iam-storage
     helm:
       parameters:
-      - name: argocd.namespace
-        value: {{ $.Values.argocd.namespace }}
-      - name: keycloak.namespace
-        value: {{ include "keycloak.namespace" . }}
-      - name: iam.namespace
-        value: {{ include "iam.namespace" . }}
-      - name: gitRepositoryUrl
-        value: {{ $.Values.gitRepositoryUrl }}
-      - name: targetRevision
-        value: {{ $.Values.targetRevision }}
       - name: rookCeph.namespace
-        value: {{ include "rookCeph.namespace" . }}
+        value: {{ $.Values.rookceph.namespace }}
       - name: postgresOperator.namespace
-        value: {{ include "postgresOperator.namespace" . }}
-
+        value: {{ $.Values.postgresOperator.namespace }}
 
   destination:
     server: https://kubernetes.default.svc
-    namespace: {{ $.Values.argocd.namespace }}
+    namespace: {{ $.Values.iam.namespace }}
 
   syncPolicy:
     automated:
-      prune: true
+      prune: false
       selfHeal: true
       allowEmpty: true
     syncOptions:

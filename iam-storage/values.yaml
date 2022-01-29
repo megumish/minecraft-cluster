@@ -1,0 +1,4 @@
+rookCeph:
+  namespace: ""
+postgresOperator:
+  namespace: ""

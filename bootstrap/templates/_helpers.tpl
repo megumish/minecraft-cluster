@@ -5,6 +5,9 @@
 {{- define "keycloak.helmRepo" -}}
 {{- "https://codecentric.github.io/helm-charts" -}}
 {{- end -}}
+{{- define "iam.namespace" -}}
+{{- "iam" -}}
+{{- end -}}
 
 
 {{/* for storage project */}}
