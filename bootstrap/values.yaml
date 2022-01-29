@@ -1,4 +1,6 @@
 gitRepositoryUrl: ""
 argocd:
   namepsace: ""
+keycloak:
+  namepsace: ""
 targetRevision: ""
