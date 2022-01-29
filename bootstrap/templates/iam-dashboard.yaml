@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: iam-project
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  description: Project for iams
+
+  sourceRepos:
+  - {{ $.Values.gitRepositoryUrl }}
+
+  destinations:
+  - namespace: {{ $.Values.argocd.namespace}}
+    server: https://kubernetes.default.svc
+
+  clusterResourceBlacklist:
+  - group: '*'
+    kind: '*'
+
+  namespaceResourceBlacklist:
+  - group: '*'
+    kind: '*'
+
+  orphanedResources:
+    warn: true
+
+  roles:
+  - name: read-only
+    description: Read-only privileges to iams
+    policies:
+    - p, proj:iam-project:read-only, applications, get, iam-project/*, allow

@@ -1,0 +1,4 @@
+gitRepositoryUrl: ""
+argocd:
+  namepsace: ""
+targetRevision: ""
