@@ -1,0 +1,44 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: dashboard
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: dashboard-project
+
+  source:
+    repoURL: {{ $.Values.gitRepositoryUrl }}
+    targetRevision: {{ $.Values.targetRevision }}
+    path: dashboard
+    helm:
+      version: '0.1.0'
+      parameters:
+      - name: argocd.namespace
+        value: {{ $.Values.argocd.namespace }}
+      - name: gitRepositoryUrl
+        value: {{ $.Values.gitRepositoryUrl }}
+      - name: targetRevision
+        value: {{ $.Values.targetRevision }}
+
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: {{ $.Values.argocd.namespace }}
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: true
+    syncOptions:
+    - Validate=true
+    - CreateNamespace=true
+    - PrunePropagationPolicy=foreground 
+    - PruneLast=true
+    retry:
+      limit: 5
+      backoff:
+        duration: 30s
+        factor: 2
+        maxDuration: 3m

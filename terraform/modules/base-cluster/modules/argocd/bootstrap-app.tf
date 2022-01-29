@@ -21,10 +21,13 @@ resource "argocd_application" "bootstrap" {
           name  = "gitRepositoryUrl"
           value = "https://github.com/megumish/minecraft-cluster"
         }
-
         parameter {
           name  = "argocd.namespace"
           value = var.argocd_namespace
+        }
+        parameter {
+          name  = "targetRevision"
+          value = "main"
         }
       }
     }
@@ -34,7 +37,20 @@ resource "argocd_application" "bootstrap" {
         self_heal   = true
         allow_empty = true
       }
-      sync_options = []
+      sync_options = [
+        "Validate=true",
+        "CreateNamespace=true",
+        "PrunePropagationPolicy=foreground",
+        "PruneLast=true"
+      ]
+      retry {
+        limit = "5"
+        backoff = {
+          duration     = "30s"
+          factor       = "2"
+          max_duration = "3m"
+        }
+      }
     }
 
   }
