@@ -9,3 +9,5 @@ postgresOperator:
   namepsace: ""
   repoUrl: ""
   targetRevision: ""
+cloudProvider:
+  storageClass: ""

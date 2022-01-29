@@ -29,6 +29,8 @@ spec:
         value: {{ include "postgresOperator.repoUrl" . }}
       - name: postgresOperator.targetRevision
         value: {{ include "postgresOperator.targetRevision" . }}
+      - name: cloudProvider.storageClass
+        value: {{ $.Values.cloudProvider.storageClass }}
 
 
   destination:

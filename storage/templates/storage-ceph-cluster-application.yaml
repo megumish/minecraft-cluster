@@ -1,0 +1,40 @@
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: storage-ceph-cluster
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: storage-project
+
+  source:
+    repoURL: {{ $.Values.gitRepositoryUrl }}
+    targetRevision: {{ $.Values.targetRevision }}
+    path: storage-ceph-cluster
+    
+    helm:
+      parameters:
+      - name: cloudProvider.storageClass
+        value: {{ $.Values.cloudProvider.storageClass }}
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: {{ $.Values.rookCeph.namespace }}
+
+  syncPolicy:
+    automated: 
+      prune: false
+      selfHeal: true
+      allowEmpty: false
+    syncOptions:
+    - Validate=true
+    - CreateNamespace=true
+    - PrunePropagationPolicy=foreground
+    - PruneLast=true
+    retry:
+      limit: 5
+      backoff:
+        duration: 30s
+        factor: 2
+        maxDuration: 3m
