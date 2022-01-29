@@ -12,7 +12,6 @@ spec:
     targetRevision: {{ $.Values.targetRevision }}
     path: iam
     helm:
-      version: v0.1.0
       parameters:
       - name: argocd.namespace
         value: {{ $.Values.argocd.namespace }}
