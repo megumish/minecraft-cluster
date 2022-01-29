@@ -13,6 +13,8 @@ spec:
   destinations:
   - namespace: {{ $.Values.argocd.namespace}}
     server: https://kubernetes.default.svc
+  - namespace: {{ template "keycloak.namespace" . }}
+    server: https://kubernetes.default.svc
 
   clusterResourceBlacklist:
   - group: '*'

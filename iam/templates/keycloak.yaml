@@ -2,7 +2,6 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: keycloak
-  namespace: {{ $.Values.argocd.namespace }}
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
@@ -15,7 +14,7 @@ spec:
 
   destination:
     server: https://kubernetes.default.svc
-    namespace: keycloak
+    namespace: {{ $.Values.keycloak.namespace }}
 
   syncPolicy:
     automated:
