@@ -16,7 +16,7 @@ spec:
       - name: argocd.namespace
         value: {{ $.Values.argocd.namespace }}
       - name: keycloak.namespace
-        value: {{- include "keycloak.helmRepo" . -}}
+        value: {{ include "keycloak.helmRepo" . -}}
       - name: gitRepositoryUrl
         value: {{ $.Values.gitRepositoryUrl }}
       - name: targetRevision
