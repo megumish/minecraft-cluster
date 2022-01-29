@@ -18,9 +18,9 @@ spec:
   - group: '*'
     kind: '*'
 
-  namespaceResourceBlacklist:
-  - group: '*'
-    kind: '*'
+  namespaceResourceWhitelist:
+  - group: 'argoproj.io'
+    kind: 'Application'
 
   orphanedResources:
     warn: true
