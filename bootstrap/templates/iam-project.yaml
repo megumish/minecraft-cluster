@@ -21,7 +21,7 @@ spec:
   - group: '*'
     kind: '*'
 
-  clusterResourceWhitelist:
+  namespaceResourceWhitelist:
   - group: "*"
     kind: "*"
   namespaceResourceBlacklist:
