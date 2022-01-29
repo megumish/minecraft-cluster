@@ -18,7 +18,7 @@ spec:
   - namespace: {{ include "rookCeph.namespace" . }} 
     server: https://kubernetes.default.svc
   - namespace: {{ include "postgresOperator.namespace" . }} 
-    server: https://kubernetes.default.svc"
+    server: https://kubernetes.default.svc
 
   clusterResourceWhitelist:
   - group: '*'
