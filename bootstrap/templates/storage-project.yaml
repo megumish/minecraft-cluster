@@ -9,9 +9,12 @@ spec:
 
   sourceRepos:
   - {{ $.Values.gitRepositoryUrl }}
+  - {{ include "rookCeph.helmUrl" . }}
 
   destinations:
   - namespace: {{ $.Values.argocd.namespace}}
+    server: https://kubernetes.default.svc
+  - namespace: {{ include "rookCeph.namespace" . }} 
     server: https://kubernetes.default.svc
 
   clusterResourceWhitelist:
@@ -21,9 +24,7 @@ spec:
   namespaceResourceWhitelist:
   - group: "*"
     kind: "*"
-  namespaceResourceBlacklist:
-  - group: 'networking.k8s.io'
-    kind: 'Ingress'
+  {{- template "deny.openNetworking" }}
 
   orphanedResources:
     warn: true

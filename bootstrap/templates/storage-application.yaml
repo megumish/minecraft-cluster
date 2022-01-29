@@ -19,6 +19,10 @@ spec:
         value: {{ $.Values.gitRepositoryUrl }}
       - name: targetRevision
         value: {{ $.Values.targetRevision }}
+      - name: rookCeph.namespace
+        value: {{ include "rookCeph.namespace" . }}
+      - name: rookCeph.helmUrl
+        value: {{ include "rookCeph.helmUrl" . }}
 
 
   destination:
