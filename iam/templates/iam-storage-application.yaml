@@ -11,12 +11,6 @@ spec:
     repoURL: {{ $.Values.gitRepositoryUrl }}
     targetRevision: {{ $.Values.targetRevision }}
     path: iam-storage
-    helm:
-      parameters:
-      - name: rookCeph.namespace
-        value: {{ $.Values.rookceph.namespace }}
-      - name: postgresOperator.namespace
-        value: {{ $.Values.postgresOperator.namespace }}
 
   destination:
     server: https://kubernetes.default.svc

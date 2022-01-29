@@ -23,11 +23,6 @@ spec:
         value: {{ $.Values.gitRepositoryUrl }}
       - name: targetRevision
         value: {{ $.Values.targetRevision }}
-      - name: rookCeph.namespace
-        value: {{ include "rookCeph.namespace" . }}
-      - name: postgresOperator.namespace
-        value: {{ include "postgresOperator.namespace" . }}
-
 
   destination:
     server: https://kubernetes.default.svc
