@@ -1,0 +1,35 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: storage-project
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  description: Project for storages
+
+  sourceRepos:
+  - {{ $.Values.gitRepositoryUrl }}
+
+  destinations:
+  - namespace: {{ $.Values.argocd.namespace}}
+    server: https://kubernetes.default.svc
+
+  clusterResourceWhitelist:
+  - group: ''
+    kind: 'Namespace'
+
+  namespaceResourceWhitelist:
+  - group: "*"
+    kind: "*"
+  namespaceResourceBlacklist:
+  - group: 'networking.k8s.io'
+    kind: 'Ingress'
+
+  orphanedResources:
+    warn: true
+
+  roles:
+  - name: read-only
+    description: Read-only privileges to storage resources
+    policies:
+    - p, proj:storage-project:read-only, applications, get, storage-project/*, allow
