@@ -17,9 +17,9 @@ spec:
   - namespace: {{ include "keycloak.namespace" . }} 
     server: https://kubernetes.default.svc
 
-  clusterResourceBlacklist:
-  - group: '*'
-    kind: '*'
+  clusterResourceWhitelist:
+  - group: ''
+    kind: 'Namespace'
 
   namespaceResourceWhitelist:
   - group: "*"
