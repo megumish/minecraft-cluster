@@ -10,7 +10,7 @@ spec:
 
   source:
     repoURL: https://codecentric.github.io/helm-charts
-    targetRevision: 17.0.1
+    targetRevision: v17.0.1
     chart: keycloak
 
   destination:
