@@ -6,3 +6,5 @@ keycloak:
 iam:
   namespace: ""
 targetRevision: ""
+cloudProvider:
+  storageClass: ""

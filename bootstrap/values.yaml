@@ -2,3 +2,5 @@ gitRepositoryUrl: ""
 argocd:
   namepsace: ""
 targetRevision: ""
+cloudProvider:
+  storageClass: ""

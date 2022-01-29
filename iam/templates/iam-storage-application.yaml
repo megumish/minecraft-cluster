@@ -11,6 +11,10 @@ spec:
     repoURL: {{ $.Values.gitRepositoryUrl }}
     targetRevision: {{ $.Values.targetRevision }}
     path: iam-storage
+    helm:
+      parameters:
+        - name: cloudProvider.storageClass
+          value: {{ $.Values.cloudProvider.storageClass }}
 
   destination:
     server: https://kubernetes.default.svc

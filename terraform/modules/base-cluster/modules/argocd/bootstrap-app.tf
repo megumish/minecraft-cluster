@@ -29,6 +29,10 @@ resource "argocd_application" "bootstrap" {
           name  = "targetRevision"
           value = "main"
         }
+        parameter {
+          name  = "cloudProvider.storageClass"
+          value = "linode-block-storage"
+        }
       }
     }
     sync_policy {
