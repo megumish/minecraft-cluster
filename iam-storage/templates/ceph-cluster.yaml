@@ -3,6 +3,15 @@ kind: CephCluster
 metadata:
   name: rook-ceph
 spec:
+  external:
+    enable: true
+  crashCollector:
+    disable: true
+  healthCheck:
+    daemonHealth:
+      mon:
+        disabled: false
+        interval: 45s
   dataDirHostPath: /var/lib/rook
   mon:
     # Set the number of mons to be started. Generally recommended to be 3.
