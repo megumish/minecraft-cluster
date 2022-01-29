@@ -5,19 +5,19 @@ resource "argocd_application" "bootstrap" {
   }
 
   spec {
-    project = var.project_name
+    project = local.bootstrap_project_name
 
     destination {
-      server    = "https://argocd.minecraft.megumi.sh"
-      namespace = "bootstrap"
+      server    = "https://kubernetes.default.svc"
+      namespace = var.argocd_namespace
     }
 
     source {
-      repo_url        = "http://github.com/megumish/minecraft-cluster"
+      repo_url        = "https://github.com/megumish/minecraft-cluster"
       path            = "bootstrap"
       target_revision = "main"
     }
   }
 
-  depends_on = [argocd_project.minecraft]
+  depends_on = [argocd_project.bootstrap]
 }

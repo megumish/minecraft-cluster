@@ -16,9 +16,19 @@ terraform {
 }
 
 provider "argocd" {
-  server_addr = "argocd.${var.domain}:443"
-  username    = "admin"
-  password    = var.argocd_password
+  server_addr                 = "localhost:8080"
+  username                    = "admin"
+  password                    = var.argocd_password
+  insecure                    = true
+  plain_text                  = true
+  port_forward                = true
+  port_forward_with_namespace = var.argocd_namespace
+
+  kubernetes {
+    host                   = var.kube_host
+    token                  = var.kube_token
+    cluster_ca_certificate = var.kube_cluster_ca_certificate
+  }
 }
 
 provider "helm" {

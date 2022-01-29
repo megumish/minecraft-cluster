@@ -4,7 +4,6 @@ module "argocd" {
   kube_host                   = module.lke.kube_host
   kube_token                  = module.lke.kube_token
   kube_cluster_ca_certificate = module.lke.kube_cluster_ca_certificate
-  project_name                = "minecraft"
   argocd_password             = var.argocd_password
   domain                      = var.domain
 

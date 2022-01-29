@@ -1,12 +1,12 @@
-resource "argocd_project" "minecraft" {
+resource "argocd_project" "bootstrap" {
   metadata {
-    name      = var.project_name
+    name      = local.bootstrap_project_name
     namespace = var.argocd_namespace
   }
 
   spec {
-    description  = "minecraft project"
-    source_repos = ["minecraft-cluster"]
+    description  = "bootstrap project"
+    source_repos = ["https://github.com/megumish/minecraft-cluster"]
 
     destination {
       server    = "https://kubernetes.default.svc"
@@ -16,22 +16,16 @@ resource "argocd_project" "minecraft" {
       group = "*"
       kind  = "*"
     }
-    namespace_resource_whitelist {
+    namespace_resource_blacklist {
       group = "*"
       kind  = "*"
     }
-    orphaned_resources {
-      warn = true
+    namespace_resource_whitelist {
+      group = "argoproj.io/v1alpha1"
+      kind  = "Application"
     }
-    role {
-      name = "minecraft-user"
-      policies = concat([
-        "p, proj:${var.project_name}:minecraft-user, applications, get, ${var.project_name}/*, allow",
-        ],
-        [
-          for action in local.deny_manual_actions :
-          "p, proj:${var.project_name}:minecraft-user, applications, ${action}, ${var.project_name}/*, deny"
-      ])
+    orphaned_resources {
+      warn = false
     }
   }
 
