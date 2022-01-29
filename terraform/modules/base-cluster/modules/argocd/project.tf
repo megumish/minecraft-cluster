@@ -16,13 +16,13 @@ resource "argocd_project" "bootstrap" {
       group = "*"
       kind  = "*"
     }
-    namespace_resource_blacklist {
-      group = "*"
-      kind  = "*"
+    namespace_resource_whitelist {
+      group = "argoproj.io"
+      kind  = "Application"
     }
     namespace_resource_whitelist {
-      group = "argoproj.io/v1alpha1"
-      kind  = "Application"
+      group = "argoproj.io"
+      kind  = "AppProject"
     }
     orphaned_resources {
       warn = false
