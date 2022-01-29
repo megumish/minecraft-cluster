@@ -6,6 +6,7 @@
 {{- "https://codecentric.github.io/helm-charts" -}}
 {{- end -}}
 
+
 {{/* for storage project */}}
 {{- define "rookCeph.namespace" -}}
 {{- "rook-ceph" -}}
@@ -16,9 +17,9 @@
 
 {{/* Project Rules */}}
 {{- define "deny.openNetworking" }}
-namespaceResourceBlacklist:
-- group: 'networking.k8s.io'
-  kind: 'Ingress'
-- group: 'traefik.containo.us'
-  kind: 'IngressRoute'
+  namespaceResourceBlacklist:
+  - group: 'networking.k8s.io'
+    kind: 'Ingress'
+  - group: 'traefik.containo.us'
+    kind: 'IngressRoute'
 {{- end }}
