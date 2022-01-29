@@ -9,12 +9,12 @@ spec:
 
   sourceRepos:
   - {{ $.Values.gitRepositoryUrl }}
-  - {{ include "keycloak.helmRepo" . -}}
+  - {{ include "keycloak.helmRepo" . }}
 
   destinations:
   - namespace: {{ $.Values.argocd.namespace}}
     server: https://kubernetes.default.svc
-  - namespace: {{ include "keycloak.namespace" . -}} 
+  - namespace: {{ include "keycloak.namespace" . }} 
     server: https://kubernetes.default.svc
 
   clusterResourceBlacklist:
