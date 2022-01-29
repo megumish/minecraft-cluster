@@ -19,7 +19,7 @@ spec:
     # size appropriate for monitor data will be used.
     volumeClaimTemplate:
       spec:
-        storageClassName: {{ $.Values.rookCeph.storageClass }}
+        storageClassName: {{ $.Values.cloudProvider.storageClass }}
         resources:
           requests:
             storage: 1Gi
@@ -118,7 +118,7 @@ spec:
                 requests:
                   storage: 1Gi
               # IMPORTANT: Change the storage class depending on your environment
-              storageClassName: {{ $.Values.rookCeph.storageClass }}
+              storageClassName: {{ $.Values.cloudProvider.storageClass }}
               volumeMode: Block
               accessModes:
                 - ReadWriteOnce
