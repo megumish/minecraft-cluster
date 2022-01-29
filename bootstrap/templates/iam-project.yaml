@@ -21,9 +21,12 @@ spec:
   - group: '*'
     kind: '*'
 
-  namespaceResourceWhitelist:
-  - group: 'argoproj.io'
-    kind: 'Application'
+  clusterResourceWhitelist:
+  - group: "*"
+    kind: "*"
+  namespaceResourceBlacklist:
+  - group: 'networking.k8s.io'
+    kind: 'Ingress'
 
   orphanedResources:
     warn: true
