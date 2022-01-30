@@ -21,8 +21,4 @@ resource "linode_lke_cluster" "main_cluster" {
       max = 10
     }
   }
-  pool {
-    type  = "g6-standard-2"
-    count = 1
-  }
 }
