@@ -13,11 +13,11 @@ resource "linode_lke_cluster" "main_cluster" {
   tags        = [var.environment]
 
   pool {
-    type  = "g6-standard-2"
-    count = 1
+    type  = "g6-standard-1"
+    count = 3
 
     autoscaler {
-      min = 1
+      min = 3
       max = 10
     }
   }
