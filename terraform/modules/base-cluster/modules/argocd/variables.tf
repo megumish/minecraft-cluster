@@ -33,3 +33,15 @@ variable "argocd_namespace" {
 variable "certificate_secret_name" {
   type = string
 }
+
+variable "source_repo" {
+  type = string
+}
+
+variable "target_revision" {
+  type = string
+}
+
+variable "cloud_provider_storage_class" {
+  type = string
+}

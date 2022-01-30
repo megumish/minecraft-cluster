@@ -1,63 +1,70 @@
-resource "argocd_application" "bootstrap" {
-  metadata {
-    name      = "bootstrap"
-    namespace = var.argocd_namespace
-  }
-
-  spec {
-    project = local.bootstrap_project_name
-
-    destination {
-      server    = "https://kubernetes.default.svc"
-      namespace = var.argocd_namespace
+resource "kubectl_manifest" "bootstrap_application" {
+  yaml_body = yamlencode({
+    apiVersion = "argoproj.io/v1alpha1"
+    kind       = "Application"
+    metadata = {
+      name       = "bootstrap"
+      namespace  = var.argocd_namespace
+      finalizers = ["resources-finalizer.argocd.argoproj.io"]
     }
 
-    source {
-      repo_url        = "https://github.com/megumish/minecraft-cluster"
-      path            = "bootstrap"
-      target_revision = "main"
-      helm {
-        parameter {
-          name  = "gitRepositoryUrl"
-          value = "https://github.com/megumish/minecraft-cluster"
+    spec = {
+      project = local.bootstrap_project_name
+
+      source = {
+        repoURL        = var.source_repo
+        targetRevision = var.target_revision
+        path           = "bootstrap"
+        helm = {
+          parameters = [
+            {
+              name  = "argocd.namespace"
+              value = var.argocd_namespace
+            },
+            {
+              name  = "gitRepositoryUrl"
+              value = var.source_repo
+            },
+            {
+              name  = "targetRevision"
+              value = var.target_revision
+            },
+            {
+              name  = "cloudProvider.storageClass"
+              value = var.cloud_provider_storage_class
+            }
+          ]
         }
-        parameter {
-          name  = "argocd.namespace"
-          value = var.argocd_namespace
+      }
+
+      destination = {
+        server    = "https://kubernetes.default.svc"
+        namespace = var.argocd_namespace
+      }
+
+      syncPolicy = {
+        automated = {
+          prune      = true
+          selfHeal   = true
+          allowEmpty = true
         }
-        parameter {
-          name  = "targetRevision"
-          value = "main"
-        }
-        parameter {
-          name  = "cloudProvider.storageClass"
-          value = "linode-block-storage"
+        syncOptions = [
+          "Validate=true",
+          "CreateNamespace=true",
+          "PrunePropagationPolicy=foreground",
+          "PruneLast=true"
+        ]
+        retry = {
+          limit = 5
+          backoff = {
+            duration    = "30s"
+            factor      = 2
+            maxDuration = "3m"
+          }
         }
       }
     }
-    sync_policy {
-      automated = {
-        prune       = true
-        self_heal   = true
-        allow_empty = true
-      }
-      sync_options = [
-        "Validate=true",
-        "CreateNamespace=true",
-        "PrunePropagationPolicy=foreground",
-        "PruneLast=true"
-      ]
-      retry {
-        limit = "5"
-        backoff = {
-          duration     = "30s"
-          factor       = "2"
-          max_duration = "3m"
-        }
-      }
-    }
+  })
 
-  }
-
-  depends_on = [argocd_project.bootstrap]
+  depends_on = [kubectl_manifest.bootstrap_project]
 }
