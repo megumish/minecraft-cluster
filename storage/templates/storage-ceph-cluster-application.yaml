@@ -27,7 +27,7 @@ spec:
   syncPolicy:
     automated: 
       prune: false
-      selfHeal: false
+      selfHeal: true
       allowEmpty: false
     syncOptions:
     - Validate=true
