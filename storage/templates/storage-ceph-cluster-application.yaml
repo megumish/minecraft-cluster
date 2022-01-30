@@ -11,7 +11,7 @@ spec:
   source:
     repoURL: {{ $.Values.gitRepositoryUrl }}
     targetRevision: {{ $.Values.targetRevision }}
-    path: storage-ceph-cluster
+    path: storage-apps/storage-ceph-cluster
     
     helm:
       parameters:
