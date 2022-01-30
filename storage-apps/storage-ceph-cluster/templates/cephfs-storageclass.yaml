@@ -13,7 +13,7 @@ parameters:
 
   # Ceph pool into which the volume shall be created
   # Required for provisionVolume: "true"
-  pool: {{ include "rookCeph.fs.name" -}} - {{- include "rookCeph.fs.poolName" . }}
+  pool: {{ include "rookCeph.fs.name" . -}} - {{- include "rookCeph.fs.poolName" . }}
 
   # The secrets contain Ceph admin credentials. These are generated automatically by the operator
   # in the same namespace as the cluster.
