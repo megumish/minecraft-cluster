@@ -17,6 +17,8 @@ spec:
       parameters:
       - name: cloudProvider.storageClass
         value: {{ $.Values.cloudProvider.storageClass }}
+      - name: rookCeph.namespace
+        value: {{ .Values.rookCeph.namespace }}
 
   destination:
     server: https://kubernetes.default.svc

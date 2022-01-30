@@ -1,2 +1,4 @@
 cloudProvider:
   storageClass: ""
+rookCeph:
+  namespace: ""
