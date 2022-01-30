@@ -54,9 +54,9 @@ spec:
         # Certain storage class in the Cloud are fast
         # Rook can configure the OSD running on PVC to accommodate that by tuning some of the Ceph internal
         # Currently, "managed-premium" has been identified as such
-        tuneFastDeviceClass: false
+        tuneFastDeviceClass: true
         # whether to encrypt the deviceSet or not
-        encrypted: false
+        encrypted: true
         # Since the OSDs could end up on any node, an effort needs to be made to spread the OSDs
         # across nodes as much as possible. Unfortunately the pod anti-affinity breaks down
         # as soon as you have more than one OSD per node. The topology spread constraints will
