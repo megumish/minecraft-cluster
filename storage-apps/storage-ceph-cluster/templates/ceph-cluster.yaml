@@ -119,7 +119,7 @@ spec:
                   storage: 1Gi
               # IMPORTANT: Change the storage class depending on your environment
               storageClassName: {{ $.Values.cloudProvider.storageClass }}
-              volumeMode: Block
+              volumeMode: FileSystem
               accessModes:
                 - ReadWriteOnce
         # dedicated block device to store bluestore database (block.db)
