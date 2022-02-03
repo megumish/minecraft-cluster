@@ -8,6 +8,6 @@ resource "random_id" "rg" {
 }
 
 resource "azurerm_resource_group" "rg" {
-  name     = "${random_id.rg.keepers.project_name}-${random_id.rg.hex}"
+  name     = "rg-${random_id.rg.keepers.project_name}-${random_id.rg.hex}"
   location = var.project_location
 }
