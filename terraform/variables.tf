@@ -1,5 +1,6 @@
 variable "linode_token" {
-  type = string
+  type    = string
+  default = ""
 }
 
 variable "environment" {
@@ -23,5 +24,17 @@ variable "source_repo" {
 }
 
 variable "target_revision" {
+  type = string
+}
+
+variable "subscription_id" {
+  type = string
+}
+
+variable "tenant_id" {
+  type = string
+}
+
+variable "client_id" {
   type = string
 }
