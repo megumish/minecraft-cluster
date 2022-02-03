@@ -1,20 +1,3 @@
-variable "domain" {
-  type = string
-}
-
-variable "soa_email" {
-  type = string
-}
-
-variable "source_repo" {
-  type = string
-}
-
-variable "target_revision" {
-  type = string
-}
-
-// gcp
 variable "folder_name" {
   type = string
 }
