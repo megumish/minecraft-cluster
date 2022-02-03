@@ -23,6 +23,16 @@ variable "target_revision" {
   type = string
 }
 
+// azure resource info
+variable "project_name" {
+  type = string
+}
+
+variable "project_location" {
+  type = string
+}
+
+// azure rm
 variable "subscription_id" {
   type = string
 }
@@ -32,5 +42,9 @@ variable "tenant_id" {
 }
 
 variable "client_id" {
+  type = string
+}
+
+variable "client_secret" {
   type = string
 }
