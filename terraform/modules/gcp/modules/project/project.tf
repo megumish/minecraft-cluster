@@ -14,7 +14,8 @@ module "project" {
     "iam.googleapis.com",
     "billingbudgets.googleapis.com",
     "serviceusage.googleapis.com",
-    "admin.googleapis.com"
+    "admin.googleapis.com",
+    "compute.googleapis.com"
   ]
   activate_api_identities = [
     {
