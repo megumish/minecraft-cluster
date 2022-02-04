@@ -12,7 +12,9 @@ module "project" {
   create_project_sa = true
   project_sa_name   = "project-service-account"
   activate_apis = [
-    "container.googleapis.com"
+    "container.googleapis.com",
+    "iam.googleapis.com",
+    "billingbudgets.googleapis.com"
   ]
   activate_api_identities = [
     {
