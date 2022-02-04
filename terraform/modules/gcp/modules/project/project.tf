@@ -2,7 +2,7 @@ module "project" {
   source  = "terraform-google-modules/project-factory/google"
   version = "11.3.1"
 
-  random_project_id = false
+  random_project_id = true
   org_id            = var.organization_id
   name              = var.project_name
   billing_account   = var.billing_account_id
