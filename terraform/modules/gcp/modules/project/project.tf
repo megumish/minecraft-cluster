@@ -17,15 +17,10 @@ module "project" {
     "admin.googleapis.com",
     "compute.googleapis.com"
   ]
-  activate_api_identities = [
-    {
-      api   = "container.googleapis.com"
-      roles = ["roles/container.clusterAdmin"]
-    }
-  ]
+  activate_api_identities            = []
   labels                             = {}
   default_service_account            = "delete"
-  budget_amount                      = var.budget_amount
+  budget_amount                      = null
   grant_services_security_admin_role = false
   grant_services_network_role        = false
 }
