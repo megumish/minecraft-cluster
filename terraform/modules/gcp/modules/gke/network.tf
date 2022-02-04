@@ -4,4 +4,6 @@ resource "google_compute_network" "gke" {
   project                 = var.project_id
   name                    = "gke"
   auto_create_subnetworks = false
+
+  depends_on = [google_project_iam_policy.project_factory_additional]
 }

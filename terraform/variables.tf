@@ -34,3 +34,7 @@ variable "organization_id" {
 variable "billing_account_id" {
   type = string
 }
+
+variable "current_user_email" {
+  type = string
+}
