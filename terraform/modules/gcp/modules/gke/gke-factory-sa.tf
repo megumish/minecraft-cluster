@@ -7,6 +7,8 @@ resource "google_service_account" "gke_factory" {
 resource "google_project_iam_policy" "gke_factory" {
   project     = var.project_id
   policy_data = data.google_iam_policy.gke_factory.policy_data
+
+  depends_on = [time_sleep.wait_for_applying_project_factory_additional]
 }
 
 data "google_iam_policy" "gke_factory" {
