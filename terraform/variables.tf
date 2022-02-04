@@ -15,7 +15,7 @@ variable "target_revision" {
 }
 
 // gcp
-variable "folder_name" {
+variable "environment" {
   type = string
 }
 

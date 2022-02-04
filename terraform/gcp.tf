@@ -1,7 +1,7 @@
 module "gcp" {
   source = "./modules/gcp"
 
-  folder_name        = var.folder_name
+  folder_name        = var.environment
   project_name       = var.project_name
   budget_amount      = var.budget_amount
   organization_id    = var.organization_id
