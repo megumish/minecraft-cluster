@@ -22,5 +22,5 @@ data "google_iam_policy" "project_factory_additional" {
 resource "time_sleep" "wait_for_applying_project_factory_additional" {
   depends_on = [google_project_iam_policy.project_factory_additional]
 
-  create_duration = "5s"
+  create_duration = "5m"
 }
