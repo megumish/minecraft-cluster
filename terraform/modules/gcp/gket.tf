@@ -1,7 +1,5 @@
 module "gke" {
   source = "./modules/gke"
 
-  providers = {
-    google = google.gke_factory
-  }
+  project_id = module.project.project_id
 }

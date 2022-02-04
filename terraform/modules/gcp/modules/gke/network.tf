@@ -1,3 +1,4 @@
 resource "google_compute_network" "gke" {
-  name = "gke"
+  project = var.project_id
+  name    = "gke"
 }
