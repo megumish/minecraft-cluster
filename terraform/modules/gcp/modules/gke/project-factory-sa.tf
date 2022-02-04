@@ -5,7 +5,7 @@ resource "google_project_iam_policy" "project_factory_additional" {
 
 data "google_iam_policy" "project_factory_additional" {
   dynamic "binding" {
-    for_each = ["roles/editor"]
+    for_each = ["roles/iam.serviceAccountTokenCreator"]
     iterator = role
     content {
       role = role.value
