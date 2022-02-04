@@ -2,6 +2,6 @@ variable "project_id" {
   type = string
 }
 
-variable "gke_factory_sa_email" {
+variable "project_factory_email" {
   type = string
 }
