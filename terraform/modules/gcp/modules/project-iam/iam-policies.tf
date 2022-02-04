@@ -10,9 +10,20 @@ data "google_iam_policy" "gke_factory_and_project_factory_additional" {
     }
   }
   dynamic "binding" {
+    for_each = ["roles/container.serviceAgent"]
+    iterator = role
+    content {
+      role = role.value
+      members = [
+        "serviceAccount:${google_service_account.gke_cluster.email}",
+      ]
+    }
+  }
+  dynamic "binding" {
     for_each = [
-      "roles/editor",                        // for viewing services of the project
-      "roles/iam.serviceAccountTokenCreator" // for impersonating gke factory service account
+      "roles/editor",                         // for viewing services of the project
+      "roles/iam.serviceAccountTokenCreator", // for impersonating gke factory service account
+      "roles/compute.networkViewer"
     ]
     iterator = role
     content {

@@ -9,3 +9,15 @@ variable "gke_factory_sa_email" {
 variable "region" {
   type = string
 }
+
+variable "zone" {
+  type = string
+}
+
+variable "cluster_name" {
+  type = string
+}
+
+variable "cluster_sa_email" {
+  type = string
+}

@@ -8,4 +8,6 @@ module "gcp" {
   billing_account_id = var.billing_account_id
   current_user_email = var.current_user_email
   region             = var.region
+  zone               = var.zone
+  cluster_name       = var.cluster_name
 }

@@ -13,3 +13,13 @@ resource "google_compute_subnetwork" "gke" {
     ip_cidr_range = "172.17.0.0/24"
   }
 }
+
+resource "google_compute_subnetwork_iam_binding" "gke" {
+  project    = var.project_id
+  region     = var.region
+  subnetwork = basename(google_compute_subnetwork.gke.id)
+  role       = "roles/compute.networkViewer"
+  members = [
+    "serviceAccount:${var.gke_factory_sa_email}"
+  ]
+}
