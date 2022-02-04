@@ -10,4 +10,5 @@ terraform {
 provider "google" {
   project                     = var.project_id
   impersonate_service_account = google_service_account.gke_factory.id
+  alias                       = "gke_factory"
 }
