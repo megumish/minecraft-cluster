@@ -38,3 +38,7 @@ variable "billing_account_id" {
 variable "current_user_email" {
   type = string
 }
+
+variable "region" {
+  type = string
+}
