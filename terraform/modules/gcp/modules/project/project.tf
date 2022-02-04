@@ -12,7 +12,8 @@ module "project" {
   activate_apis = [
     "container.googleapis.com",
     "iam.googleapis.com",
-    "billingbudgets.googleapis.com"
+    "billingbudgets.googleapis.com",
+    "serviceusage.googleapis.com"
   ]
   activate_api_identities = [
     {
