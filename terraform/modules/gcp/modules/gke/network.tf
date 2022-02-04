@@ -6,7 +6,6 @@ resource "google_compute_network" "gke" {
   auto_create_subnetworks = false
 
   depends_on = [
-    google_project_iam_policy.project_factory_additional,
-    google_project_iam_policy.gke_factory
+    google_project_iam_policy.gke_factory_and_project_factory_additional
   ]
 }
