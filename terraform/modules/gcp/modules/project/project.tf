@@ -17,7 +17,12 @@ module "project" {
     "admin.googleapis.com",
     "compute.googleapis.com"
   ]
-  activate_api_identities            = []
+  activate_api_identities = [
+    {
+      api   = "compute.googleapis.com"
+      roles = []
+    }
+  ]
   labels                             = {}
   default_service_account            = "delete"
   budget_amount                      = null
