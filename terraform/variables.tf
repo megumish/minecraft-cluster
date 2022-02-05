@@ -50,3 +50,12 @@ variable "zone" {
 variable "cluster_name" {
   type = string
 }
+
+variable "project_owners" {
+  type = list(object(
+    {
+      type  = string
+      email = string
+    }
+  ))
+}

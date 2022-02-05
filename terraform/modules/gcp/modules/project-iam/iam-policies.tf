@@ -33,4 +33,12 @@ data "google_iam_policy" "gke_factory_and_project_factory_additional" {
       ]
     }
   }
+  dynamic "binding" {
+    for_each = ["roles/owner"]
+    iterator = role
+    content {
+      role    = role.value
+      members = [for owner in var.project_owners : "${owner.type}:${owner.email}"]
+    }
+  }
 }

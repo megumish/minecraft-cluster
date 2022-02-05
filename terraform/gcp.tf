@@ -10,4 +10,5 @@ module "gcp" {
   region             = var.region
   zone               = var.zone
   cluster_name       = var.cluster_name
+  project_owners     = var.project_owners
 }

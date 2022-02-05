@@ -5,3 +5,12 @@ variable "project_id" {
 variable "project_factory_email" {
   type = string
 }
+
+variable "project_owners" {
+  type = list(object(
+    {
+      type  = string
+      email = string
+    }
+  ))
+}
