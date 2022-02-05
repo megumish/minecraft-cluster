@@ -21,6 +21,8 @@ module "project" {
     {
       api   = "compute.googleapis.com"
       roles = ["roles/editor"],
+    },
+    {
       api   = "container.googleapis.com"
       roles = ["roles/editor"],
     }
