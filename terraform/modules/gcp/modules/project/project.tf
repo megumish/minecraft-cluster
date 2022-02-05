@@ -24,7 +24,7 @@ module "project" {
     }
   ]
   labels                             = {}
-  default_service_account            = "delete"
+  default_service_account            = "keep"
   budget_amount                      = null
   grant_services_security_admin_role = false
   grant_services_network_role        = false
