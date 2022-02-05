@@ -21,3 +21,7 @@ variable "cluster_name" {
 variable "cluster_sa_email" {
   type = string
 }
+
+variable "project_iam_etag" {
+  type = string
+}
