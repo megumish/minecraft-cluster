@@ -23,7 +23,6 @@ data "google_iam_policy" "gke_factory_and_project_factory_additional" {
     for_each = [
       "roles/editor",                         // for viewing services of the project
       "roles/iam.serviceAccountTokenCreator", // for impersonating gke factory service account
-      "roles/compute.networkViewer"
     ]
     iterator = role
     content {
