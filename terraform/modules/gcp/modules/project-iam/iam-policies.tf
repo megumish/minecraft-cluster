@@ -1,6 +1,6 @@
 data "google_iam_policy" "gke_factory_and_project_factory_additional" {
   dynamic "binding" {
-    for_each = ["roles/container.serviceAgent"]
+    for_each = ["roles/editor"]
     iterator = role
     content {
       role = role.value

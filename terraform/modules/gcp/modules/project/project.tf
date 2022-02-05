@@ -20,7 +20,7 @@ module "project" {
   activate_api_identities = [
     {
       api   = "compute.googleapis.com"
-      roles = ["roles/container.serviceAgent"]
+      roles = ["roles/editor"]
     }
   ]
   labels                             = {}
