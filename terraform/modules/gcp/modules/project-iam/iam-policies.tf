@@ -6,7 +6,8 @@ data "google_iam_policy" "gke_factory_and_project_factory_additional" {
       role = role.value
       members = [
         "serviceAccount:${google_service_account.gke_factory.email}",
-        "serviceAccount:${var.api_sa_email}"
+        "serviceAccount:${var.project_number}@cloudservices.gserviceaccount.com",
+        "serviceAccount:${var.project_number}-compute@developer.gserviceaccount.com",
       ]
     }
   }

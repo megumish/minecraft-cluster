@@ -4,5 +4,5 @@ module "project_iam" {
   project_id            = module.project.project_id
   project_factory_email = var.current_user_email
   project_owners        = var.project_owners
-  api_sa_email          = module.project.api_sa_email
+  project_number        = module.project.project_number
 }

@@ -6,7 +6,7 @@ variable "project_factory_email" {
   type = string
 }
 
-variable "api_sa_email" {
+variable "project_number" {
   type = string
 }
 
