@@ -8,6 +8,7 @@ data "google_iam_policy" "gke_factory_and_project_factory_additional" {
         "serviceAccount:${google_service_account.gke_factory.email}",
         "serviceAccount:${var.project_number}@cloudservices.gserviceaccount.com",
         "serviceAccount:${var.project_number}-compute@developer.gserviceaccount.com",
+        "serviceAccount:service-${var.project_number}@container-engine-robot.iam.gserviceaccount.com",
       ]
     }
   }
