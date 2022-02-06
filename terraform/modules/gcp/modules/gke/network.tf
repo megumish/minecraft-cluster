@@ -36,7 +36,7 @@ module "gke_vpc" {
     {
       name      = "ingress-internet"
       direction = "INGRESS"
-      priority  = 0
+      priority  = 65535
       ranges    = ["0.0.0.0/0"]
       allow     = []
       deny = [{
