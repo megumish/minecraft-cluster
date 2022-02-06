@@ -13,3 +13,4 @@ resource "google_compute_subnetwork" "gke" {
     ip_cidr_range = "172.17.0.0/24"
   }
 }
+
