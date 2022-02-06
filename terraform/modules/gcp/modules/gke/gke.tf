@@ -55,11 +55,11 @@ module "gke" {
   ]
   enable_resource_consumption_export = false
   cluster_autoscaling = {
-    enabled       = true
-    min_cpu_cores = 1
-    max_cpu_cores = 4
-    min_memory_gb = 1
-    max_memory_gb = 4
+    enabled       = false
+    min_cpu_cores = 0
+    max_cpu_cores = 0
+    min_memory_gb = 0
+    max_memory_gb = 0
     gpu_resources = []
   }
   create_service_account = false
