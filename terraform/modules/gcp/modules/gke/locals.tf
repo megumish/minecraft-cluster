@@ -17,7 +17,7 @@ locals {
   ]
   node_pool_default = {
     machine_type       = "e2-medium"
-    min_count          = 1
+    min_count          = 2
     max_count          = 2
     local_ssd_count    = 0
     disk_size_gb       = 20
