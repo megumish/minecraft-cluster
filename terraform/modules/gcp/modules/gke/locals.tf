@@ -5,6 +5,7 @@ locals {
     {
       name           = "minecraft-medium0"
       node_locations = "${var.region}-a"
+      disk_type      = "pd-balanced"
     },
     {
       name           = "minecraft-medium1"
