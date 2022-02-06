@@ -20,7 +20,7 @@ spec:
     volumeClaimTemplate:
       spec:
         storageClassName: {{ $.Values.cloudProvider.storageClass }}
-        volumeMode: FileSystem
+        volumeMode: Block
         resources:
           requests:
             storage: 1Gi
@@ -120,7 +120,7 @@ spec:
                   storage: 1Gi
               # IMPORTANT: Change the storage class depending on your environment
               storageClassName: {{ $.Values.cloudProvider.storageClass }}
-              volumeMode: FileSystem
+              volumeMode: Block
               accessModes:
                 - ReadWriteOnce
         # dedicated block device to store bluestore database (block.db)
