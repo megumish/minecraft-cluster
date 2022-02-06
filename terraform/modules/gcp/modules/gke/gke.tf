@@ -39,7 +39,7 @@ module "gke" {
         initial_node_count = 3
       },
     ],
-    [for np in local.node_pools : merge(local.node_pool_default, np)]
+    # [for np in local.node_pools : merge(local.node_pool_default, np)]
   )
   enable_resource_consumption_export = false
   cluster_autoscaling = {
