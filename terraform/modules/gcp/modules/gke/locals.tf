@@ -29,7 +29,7 @@ locals {
     auto_upgrade       = true
     autoscaling        = true
     preemptible        = true
-    initial_node_count = 1
+    initial_node_count = 2
   }
 
 }
