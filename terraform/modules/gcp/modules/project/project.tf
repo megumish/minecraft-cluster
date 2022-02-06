@@ -17,16 +17,7 @@ module "project" {
     "admin.googleapis.com",
     "compute.googleapis.com"
   ]
-  activate_api_identities = [
-    {
-      api   = "compute.googleapis.com"
-      roles = ["roles/editor"],
-    },
-    {
-      api   = "container.googleapis.com"
-      roles = ["roles/editor"],
-    }
-  ]
+  activate_api_identities            = []
   labels                             = {}
   default_service_account            = "keep"
   budget_amount                      = null
