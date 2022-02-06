@@ -22,6 +22,22 @@ module "gke" {
       auto_repair  = true
       auto_upgrade = true
     },
+    {
+      name               = "${random_id.node_name.keepers.cluster_name}-${random_id.node_name.hex}"
+      machine_type       = "e2-micro"
+      node_locations     = var.zone
+      min_count          = 1
+      max_count          = 1
+      local_ssd_count    = 0
+      disk_size_gb       = 10
+      disk_type          = "pd-standard"
+      image_type         = "COS_CONTAINERD"
+      auto_repair        = true
+      auto_upgrade       = true
+      service_account    = var.cluster_sa_email
+      preemptible        = true
+      initial_node_count = 1
+    }
   ]
   enable_resource_consumption_export = false
   cluster_autoscaling = {
