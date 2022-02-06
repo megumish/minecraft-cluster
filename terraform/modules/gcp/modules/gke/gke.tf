@@ -35,7 +35,7 @@ module "gke" {
       auto_upgrade       = true
       autoscaling        = true
       preemptible        = true
-      initial_node_count = 1
+      initial_node_count = 3
     }
   ]
   enable_resource_consumption_export = false
