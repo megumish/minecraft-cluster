@@ -33,16 +33,16 @@ module "gke_vpc" {
   delete_default_internet_gateway_routes = false
   routes                                 = []
   firewall_rules = [
-    {
-      name      = "ingress-internet"
-      direction = "INGRESS"
-      priority  = 0
-      ranges    = ["0.0.0.0/0"]
-      allow     = []
-      deny = [{
-        protocol = "all"
-        ports    = []
-      }]
-    }
+    # {
+    #   name      = "ingress-internet"
+    #   direction = "INGRESS"
+    #   priority  = 0
+    #   ranges    = ["0.0.0.0/0"]
+    #   allow     = []
+    #   deny = [{
+    #     protocol = "all"
+    #     ports    = []
+    #   }]
+    # }
   ]
 }
