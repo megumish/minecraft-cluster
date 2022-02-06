@@ -27,7 +27,7 @@ module "gke" {
       min_count          = 3
       max_count          = 10
       local_ssd_count    = 0
-      disk_size_gb       = 10
+      disk_size_gb       = 20
       disk_type          = "pd-standard"
       image_type         = "COS_CONTAINERD"
       service_account    = var.cluster_sa_email
