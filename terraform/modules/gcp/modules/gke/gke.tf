@@ -18,7 +18,9 @@ module "gke" {
   remove_default_node_pool   = true
   node_pools = [
     {
-      name = var.cluster_name
+      name         = var.cluster_name
+      auto_repair  = true
+      auto_upgrade = true
     },
   ]
   enable_resource_consumption_export = false
