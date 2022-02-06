@@ -24,9 +24,9 @@ module "gke" {
   cluster_autoscaling = {
     enabled       = false
     min_cpu_cores = 0
-    max_cpu_cores = 0
+    max_cpu_cores = 100
     min_memory_gb = 0
-    max_memory_gb = 0
+    max_memory_gb = 100
     gpu_resources = []
   }
   create_service_account = false
