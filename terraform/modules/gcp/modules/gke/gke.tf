@@ -10,8 +10,8 @@ module "gke" {
   subnetwork                         = module.gke_vpc.subnets_names[0]
   kubernetes_version                 = "1.21.6-gke.1500"
   release_channel                    = "REGULAR"
-  horizontal_pod_autoscaling         = false
-  enable_vertical_pod_autoscaling    = false
+  horizontal_pod_autoscaling         = true
+  enable_vertical_pod_autoscaling    = true
   http_load_balancing                = false
   logging_service                    = "none"
   monitoring_service                 = "none"
