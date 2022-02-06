@@ -6,8 +6,8 @@ module "gke" {
   name                       = var.cluster_name
   regional                   = false
   zones                      = [var.zone]
-  network                    = module.gke_vpc.network_self_link
-  subnetwork                 = module.gke_vpc.subnets_self_links[0]
+  network                    = module.gke_vpc.network_name
+  subnetwork                 = module.gke_vpc.subnets_names[0]
   kubernetes_version         = "1.21.6-gke.1500"
   release_channel            = "REGULAR"
   horizontal_pod_autoscaling = false
