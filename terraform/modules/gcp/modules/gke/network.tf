@@ -1,4 +1,4 @@
-module "gke-vpc" {
+module "gke_vpc" {
   source  = "terraform-google-modules/network/google"
   version = "4.1.0"
 
