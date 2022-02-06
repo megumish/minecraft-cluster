@@ -10,6 +10,7 @@ locals {
     {
       name           = "minecraft-medium1"
       node_locations = "${var.region}-b"
+      disk_type      = "pd-ssd"
     },
     {
       name           = "minecraft-medium2"
