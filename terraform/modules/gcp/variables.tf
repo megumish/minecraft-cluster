@@ -42,3 +42,15 @@ variable "project_owners" {
     }
   ))
 }
+
+variable "domain" {
+  type = string
+}
+
+variable "source_repo" {
+  type = string
+}
+
+variable "target_revision" {
+  type = string
+}

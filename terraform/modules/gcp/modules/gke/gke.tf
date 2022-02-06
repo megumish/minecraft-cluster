@@ -50,3 +50,5 @@ module "gke" {
   create_service_account = false
   service_account        = var.cluster_sa_email
 }
+
+data "google_client_config" "default" {}

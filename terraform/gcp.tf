@@ -11,4 +11,7 @@ module "gcp" {
   zone               = var.zone
   cluster_name       = var.cluster_name
   project_owners     = var.project_owners
+  domain             = var.domain
+  source_repo        = var.source_repo
+  target_revision    = var.target_revision
 }
