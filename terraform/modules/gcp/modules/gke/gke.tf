@@ -13,6 +13,8 @@ module "gke" {
   horizontal_pod_autoscaling      = true
   enable_vertical_pod_autoscaling = true
   http_load_balancing             = false
+  logging_service                 = "none"
+  monitoring_service              = "none"
   maintenance_start_time          = "14:00"
   ip_range_pods                   = module.gke_vpc.subnets_secondary_ranges[0][0].range_name
   ip_range_services               = module.gke_vpc.subnets_secondary_ranges[0][1].range_name
