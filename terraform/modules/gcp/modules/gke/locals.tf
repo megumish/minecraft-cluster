@@ -5,12 +5,10 @@ locals {
     {
       name           = "minecraft-medium0"
       node_locations = "${var.region}-a"
-      disk_type      = "pd-ssd"
     },
     {
       name           = "minecraft-medium1"
       node_locations = "${var.region}-b"
-      disk_type      = "pd-ssd"
     },
     {
       name           = "minecraft-medium2"
@@ -23,7 +21,7 @@ locals {
     max_count          = 2
     local_ssd_count    = 0
     disk_size_gb       = 20
-    disk_type          = "pd-standard"
+    disk_type          = "pd-ssd"
     image_type         = "COS_CONTAINERD"
     service_account    = var.cluster_sa_email
     auto_repair        = true
