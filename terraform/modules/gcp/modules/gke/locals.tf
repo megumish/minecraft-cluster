@@ -28,7 +28,7 @@ locals {
     auto_upgrade       = true
     autoscaling        = true
     preemptible        = true
-    initial_node_count = 3
+    initial_node_count = 1
   }
 
 }
