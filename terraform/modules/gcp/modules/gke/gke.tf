@@ -9,6 +9,7 @@ module "gke" {
   network                    = basename(google_compute_network.gke.id)
   subnetwork                 = basename(google_compute_subnetwork.gke.id)
   kubernetes_version         = "1.21.6-gke.1500"
+  release_channel            = "REGULAR"
   horizontal_pod_autoscaling = false
   http_load_balancing        = false
   maintenance_start_time     = "14:00"
