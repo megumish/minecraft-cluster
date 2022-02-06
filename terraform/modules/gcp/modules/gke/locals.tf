@@ -3,22 +3,22 @@ locals {
   svc_secondary_ip_range_name = "gke-svc-ip-range"
   node_pools = [
     {
-      name           = "minecraft-medium-0"
-      node_locations = var.zone
+      name           = "minecraft-medium0"
+      node_locations = "${var.region}-a"
     },
     {
-      name           = "minecraft-medium-1"
-      node_locations = var.zone
+      name           = "minecraft-medium1"
+      node_locations = "${var.region}-b"
     },
     {
-      name           = "minecraft-medium-2"
-      node_locations = var.zone
+      name           = "minecraft-medium2"
+      node_locations = "${var.region}-c"
     }
   ]
   node_pool_default = {
     machine_type       = "e2-medium"
     min_count          = 1
-    max_count          = 3
+    max_count          = 1
     local_ssd_count    = 0
     disk_size_gb       = 20
     disk_type          = "pd-standard"
