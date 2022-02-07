@@ -23,7 +23,7 @@ spec:
         volumeMode: Block
         resources:
           requests:
-            storage: 1Gi
+            storage: 10Gi
   cephVersion:
     image: quay.io/ceph/ceph:v16.2.7
     allowUnsupported: false
@@ -117,7 +117,7 @@ spec:
             spec:
               resources:
                 requests:
-                  storage: 1Gi
+                  storage: 10Gi
               # IMPORTANT: Change the storage class depending on your environment
               storageClassName: {{ $.Values.cloudProvider.storageClass }}
               volumeMode: Block
