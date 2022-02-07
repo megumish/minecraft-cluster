@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: storage-ceph-cluster
+  name: rook-ceph
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
@@ -11,7 +11,7 @@ spec:
   source:
     repoURL: {{ $.Values.gitRepositoryUrl }}
     targetRevision: {{ $.Values.targetRevision }}
-    path: storage-apps/storage-ceph-cluster
+    path: storage-apps/rook-ceph
     
     helm:
       parameters:
