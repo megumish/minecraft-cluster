@@ -5,6 +5,10 @@ resource "helm_release" "argo_cd" {
   version    = "3.31.1"
   namespace  = var.argocd_namespace
 
+  values = [
+    "${file("${path.module}/argo-cd-values.yaml")}",
+  ]
+
   set {
     name  = "server.logLevel"
     value = "debug"
