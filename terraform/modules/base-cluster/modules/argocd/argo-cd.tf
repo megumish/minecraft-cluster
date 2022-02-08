@@ -6,7 +6,7 @@ resource "helm_release" "argo_cd" {
   namespace  = var.argocd_namespace
 
   values = [
-    "${file("${path.module}/argo-cd-values.yaml")}",
+    "${file("${path.module}/dhall-values.yaml")}",
   ]
 
   set {
