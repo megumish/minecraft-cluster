@@ -16,8 +16,6 @@ let deployment =
               [ kubernetes.Container::{
                 , name = "nginx"
                 , image = Some "nginx:1.15.3"
-                , ports = Some
-                  [ kubernetes.ContainerPort::{ containerPort = 80 } ]
                 }
               ]
             }
