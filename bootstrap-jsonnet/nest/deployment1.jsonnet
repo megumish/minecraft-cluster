@@ -1,10 +1,10 @@
 function(
-  name2
+  name1
 ) {
   apiVersion: 'apps/v1',
   kind: 'Deployment',
   metadata: {
-    name: name2,
+    name: name1,
     labels: {
       app: 'nginx',
     },

@@ -18,15 +18,16 @@ resource "kubectl_manifest" "bootstrap_application" {
         directory = {
           recurse = true
           jsonnet = {
-            tlas = [{
-              code  = false
-              name  = "name1"
-              value = "name1"
+            tlas = [
+              {
+                code  = false
+                name  = "name1"
+                value = "name1"
               },
               {
                 code  = false
-                name  = "name2"
-                value = "name2"
+                name  = "nest/name1"
+                value = "name1"
               }
             ]
           }
