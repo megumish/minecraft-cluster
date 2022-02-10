@@ -3,7 +3,8 @@ resource "kubectl_manifest" "dhall_plugin" {
     apiVersion = "v1"
     kind       = "ConfigMap"
     metadata = {
-      name = "dhal-plugin"
+      name      = "dhal-plugin"
+      namespace = var.argocd_namespace
       labels = {
         "app.kubernetes.io/name"    = "argocd-cm"
         "app.kubernetes.io/part-of" = "argocd"
