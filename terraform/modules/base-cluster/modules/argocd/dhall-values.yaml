@@ -14,6 +14,6 @@ repoServer:
   containers:
   - name: argocd-repo-server
     volumeMounts:
-    - mountPath: /usr/local/bin/dhall-to-yaml
+    - mountPath: /usr/local/bin/dhall-to-yaml-ng
       name: dhall-tools
       subPath: dhall-to-yaml-ng
