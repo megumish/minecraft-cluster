@@ -14,7 +14,8 @@ resource "kubectl_manifest" "dhall_plugin" {
       configManagementPlugins = <<EOT
 - name: dhall
   generate:
-    command: [dhall-to-yaml, -f, main.dhall]
+    command: [dhall-to-yaml-ng]
+    args: [--file, main.dhall]
       EOT
     }
   })
