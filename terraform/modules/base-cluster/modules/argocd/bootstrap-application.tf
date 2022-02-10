@@ -22,7 +22,13 @@ resource "kubectl_manifest" "bootstrap_application" {
               code  = false
               name  = "name1"
               value = "name1"
-            }]
+              },
+              {
+                code  = false
+                name  = "name2"
+                value = "name2"
+              }
+            ]
           }
         }
       }
