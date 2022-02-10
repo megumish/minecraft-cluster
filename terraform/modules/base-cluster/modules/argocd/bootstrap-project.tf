@@ -19,13 +19,9 @@ resource "kubectl_manifest" "bootstrap_project" {
       ]
       namespaceResourceWhiteList = [
         {
-          group = "argoproj.io"
-          kind  = "Application"
+          group = "*"
+          kind  = "*"
         },
-        {
-          group = "argoproj.io"
-          kind  = "AppProject"
-        }
       ]
       orphanResources = {
         warn = false

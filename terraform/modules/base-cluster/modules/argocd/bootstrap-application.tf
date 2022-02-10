@@ -14,26 +14,16 @@ resource "kubectl_manifest" "bootstrap_application" {
       source = {
         repoURL        = var.source_repo
         targetRevision = var.target_revision
-        path           = "bootstrap"
-        helm = {
-          parameters = [
-            {
-              name  = "argocd.namespace"
-              value = var.argocd_namespace
-            },
-            {
-              name  = "gitRepositoryUrl"
-              value = var.source_repo
-            },
-            {
-              name  = "targetRevision"
-              value = var.target_revision
-            },
-            {
-              name  = "cloudProvider.storageClass"
-              value = var.cloud_provider_storage_class
-            }
-          ]
+        path           = "bootstrap-jsonnet"
+        directory = {
+          recurse = true
+          jsonnet = {
+            tlas = [{
+              code  = false
+              name  = "name1"
+              value = "name1"
+            }]
+          }
         }
       }
 
