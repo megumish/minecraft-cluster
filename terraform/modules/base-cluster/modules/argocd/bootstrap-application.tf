@@ -18,17 +18,35 @@ resource "kubectl_manifest" "bootstrap_application" {
         directory = {
           recurse = true
           jsonnet = {
+            extVars = [
+              {
+                code  = true
+                name  = "cloudProvider"
+                value = <<EOT
+                {
+                  storageClass: "${var.cloud_provider_storage_class}"
+                }
+                EOT
+              }
+            ]
             tlas = [
               {
-                code  = false
-                name  = "name1"
-                value = "name1"
+                name  = "gitRepositoryUrl"
+                value = var.source_repo
               },
               {
-                code  = false
-                name  = "nest/name1"
-                value = "name1"
-              }
+                code  = true
+                name  = "argocd"
+                value = <<EOT
+                {
+                  namespace: "${var.argocd_namespace}"
+                }
+                EOT
+              },
+              {
+                name  = "targetRevision"
+                value = var.target_revision
+              },
             ]
           }
         }
