@@ -11,16 +11,11 @@ resource "kubectl_manifest" "dhall_plugin" {
       }
     }
     data = {
-      configManagementPlugins = yamlencode(
-        [
-          {
-            name = "dhall"
-            generate = {
-              command = ["dhall-to-yaml", "--file", "main.dhall"]
-            }
-          }
-        ]
-      )
+      configManagementPlugins = <<EOT
+- name: dhall
+  generate:
+    command: [dhall-to-yaml, -f, main.dhall]
+      EOT
     }
   })
 
