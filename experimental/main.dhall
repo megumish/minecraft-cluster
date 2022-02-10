@@ -1,4 +1,4 @@
-let kubrenetes =
+let kubernetes =
       https://raw.githubusercontent.com/dhall-lang/dhall-kubernetes/v6.0.0/1.21/package.dhall
 
 let deployment =
