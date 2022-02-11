@@ -1,0 +1,25 @@
+repoServer:
+  volumes:
+  - name: tanka-tools
+    emptyDir: {}
+  initContainers:
+  - name: download-tanka
+    image: debian:bullseye-slim
+    command: [/bin/sh, -c]
+    args:
+    - apt-get update -y && 
+        apt-get install curl bzip2 -y && 
+        curl -Lo /tanka-tools/tk https://github.com/grafana/tanka/releases/latest/download/tk-linux-amd64 && 
+        chmod +x /tanka-tools/tk && 
+        curl -Lo /tanka-tools/jb https://github.com/jsonnet-bundler/jsonnet-bundler/releases/latest/download/jb-linux-amd64 && 
+        chmod +x /tanka-tools/jb
+    volumeMounts:
+    - mountPath: /tanka-tools
+      name: tanka-tools
+  volumeMounts:
+  - mountPath: /usr/local/bin/tk
+    name: tanka-tools
+    subPath: tk
+  - mountPath: /usr/local/bin/jb
+    name: tanka-tools
+    subPath: jb

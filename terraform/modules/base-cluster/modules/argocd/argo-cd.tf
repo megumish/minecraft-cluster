@@ -6,6 +6,7 @@ resource "helm_release" "argo_cd" {
   namespace  = var.argocd_namespace
 
   values = [
+    "${file("${path.module}/tk-plugin-values.yaml")}"
   ]
 
   set {
