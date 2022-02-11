@@ -1,17 +1,17 @@
-repoServer:
-  volumes:
-  - name: dhall-tools
-    emptyDir: {}
-  initContainers:
-  - name: download-dhall
-    image: debian:bullseye-slim
-    command: [/bin/sh, -c]
-    args:
-    - apt-get update -y && apt-get install curl bzip2 -y && curl -sL https://github.com/dhall-lang/dhall-haskell/releases/download/1.40.2/dhall-yaml-1.2.9-x86_64-linux.tar.bz2 | tar xjvf - && mv bin/* /dhall-tools/
-    volumeMounts:
-    - mountPath: /dhall-tools
-      name: dhall-tools
-  volumeMounts:
-  - mountPath: /usr/local/bin/dhall-to-yaml-ng
-    name: dhall-tools
-    subPath: dhall-to-yaml-ng
+# repoServer:
+#   volumes:
+#   - name: dhall-tools
+#     emptyDir: {}
+#   initContainers:
+#   - name: download-dhall
+#     image: debian:bullseye-slim
+#     command: [/bin/sh, -c]
+#     args:
+#     - apt-get update -y && apt-get install curl bzip2 -y && curl -sL https://github.com/dhall-lang/dhall-haskell/releases/download/1.40.2/dhall-yaml-1.2.9-x86_64-linux.tar.bz2 | tar xjvf - && mv bin/* /dhall-tools/
+#     volumeMounts:
+#     - mountPath: /dhall-tools
+#       name: dhall-tools
+#   volumeMounts:
+#   - mountPath: /usr/local/bin/dhall-to-yaml-ng
+#     name: dhall-tools
+#     subPath: dhall-to-yaml-ng
