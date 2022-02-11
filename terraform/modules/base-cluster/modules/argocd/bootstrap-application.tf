@@ -14,43 +14,17 @@ resource "kubectl_manifest" "bootstrap_application" {
       source = {
         repoURL        = var.source_repo
         targetRevision = var.target_revision
-        path           = "bootstrap-jsonnet"
-        directory = {
-          recurse = true
-          jsonnet = {
-            extVars = [
-              {
-                code  = true
-                name  = "cloudProvider"
-                value = <<EOT
-                {
-                  storageClass: "${var.cloud_provider_storage_class}"
-                }
-                EOT
-              }
-            ]
-            tlas = [
-              {
-                name  = "gitRepositoryUrl"
-                value = var.source_repo
-              },
-              {
-                code  = true
-                name  = "argocd"
-                value = <<EOT
-                {
-                  namespace: "${var.argocd_namespace}"
-                }
-                EOT
-              },
-              {
-                name  = "targetRevision"
-                value = var.target_revision
-              },
-            ]
-          }
+        path           = "bootstrap-tanka"
+        plugin = {
+          name = "tanka"
+          env = [{
+            name  = "TK_ENVIRONMENT"
+            value = "default"
+            }
+          ]
         }
       }
+
 
       destination = {
         server    = "https://kubernetes.default.svc"
