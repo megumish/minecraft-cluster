@@ -13,9 +13,11 @@ resource "kubectl_manifest" "tk_plugin" {
     data = {
       configManagementPlugins = <<EOT
 - name: tanka
+  init:
+    command: [jb, update]
   generate:
     command: [sh, -c]
-    args: [tk, eval, environments/$TK_ENVIRONMENT]
+    args: [tk, show, environments/$TK_ENVIRONMENT]
       EOT
     }
   })
