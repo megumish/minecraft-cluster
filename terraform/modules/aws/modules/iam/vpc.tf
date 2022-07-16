@@ -1,7 +1,6 @@
 data "aws_iam_policy_document" "vpc_manager" {
   statement {
     actions   = ["ec2:CreateVpc", "ec2:DeleteVpc"]
-    sid       = "VpcManager"
     resources = ["*"]
     effect    = "Allow"
   }
