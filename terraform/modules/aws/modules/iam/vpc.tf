@@ -1,6 +1,6 @@
 data "aws_iam_policy_document" "vpc_manager" {
   statement {
-    actions   = ["CreateVpc", "DeleteVpc"]
+    actions   = ["ec2:CreateVpc", "ec2:DeleteVpc"]
     sid       = "VpcManager"
     resources = ["*"]
   }
