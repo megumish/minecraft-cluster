@@ -1,5 +1,5 @@
 locals {
-  bootstrap_project {
+  bootstrap_project = {
     name = "${var.project_name}-bootstrap"
   }
 }

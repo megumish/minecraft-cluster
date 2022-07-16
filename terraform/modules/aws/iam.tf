@@ -5,5 +5,7 @@ module "iam" {
     aws = aws.bootstrap
   }
 
-  project = local.bootstrap_project
+  project = {
+    name = local.bootstrap_project.name
+  }
 }
