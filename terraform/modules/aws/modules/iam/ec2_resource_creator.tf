@@ -22,6 +22,7 @@ data "aws_iam_policy_document" "ec2_resource_creator" {
     }
     resources = ["*"]
     effect    = "Allow"
+    sid       = "Ec2ResourceCreatorAsModifierPolicy"
   }
 
   statement {
@@ -30,18 +31,26 @@ data "aws_iam_policy_document" "ec2_resource_creator" {
       identifiers = ["ec2.amazonaws.com"]
     }
     actions = [
-      # create vpc resources
+      # create ec2 resources
       "ec2:Create*",
       "ec2:Attach*",
       "ec2:Associate*",
     ]
     resources = ["*"]
     effect    = "Allow"
+    sid       = "Ec2ResourceCreatorAsCreatorPolicy"
   }
 }
 
+data "aws_iam_policy_document" "ec2-resource-creator-assume-role-policy" {
+}
+
 resource "aws_iam_role" "ec2_resource_creator" {
-  name               = "ec2_resource_creator"
+  name               = "ec2-resource-creator"
   path               = "/${var.project.name}/"
-  assume_role_policy = data.aws_iam_policy_document.ec2_resource_creator.json
+  assume_role_policy = data.aws_iam_policy_document.ec2-resource-creator-assume-role-policy.json
+  inline_policy {
+    name   = "ec2-resource-creator-policy"
+    policy = data.aws_iam_policy_document.ec2_resource_creator.json
+  }
 }
