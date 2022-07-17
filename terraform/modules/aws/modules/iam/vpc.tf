@@ -1,10 +1,10 @@
 # Reference: https://docs.aws.amazon.com/vpc/latest/userguide/vpc-policy-examples.html
 data "aws_iam_policy_document" "vpc_manager" {
-  principals {
-    type        = "Service"
-    identifiers = ["ec2.amazonaws.com"]
-  }
   statement {
+    principals = {
+      type        = "Service"
+      identifiers = ["ec2.amazonaws.com"]
+    }
     actions = [
       # delete and modify vpc resources
       "ec2:DeleteInternetGateway",
@@ -63,13 +63,17 @@ data "aws_iam_policy_document" "vpc_manager" {
     condition {
       test     = "ForAnyValue:StringEquals"
       variable = "ec2:ResourceTag/Environment"
-      values   = [var.project]
+      values   = [var.project.name]
     }
     resources = ["*"]
     effect    = "Allow"
   }
 
   statement {
+    principals = {
+      type        = "Service"
+      identifiers = ["ec2.amazonaws.com"]
+    }
     actions = [
       # create vpc resources
       "ec2:CreateVpc",
