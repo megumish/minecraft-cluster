@@ -48,7 +48,7 @@ data "aws_iam_policy_document" "ec2-resource-creator-assume-role-policy" {
     sid     = "Ec2ResourceCreatorAssumeRolePolicy"
     principals {
       type        = "Service"
-      identifiers = []
+      identifiers = ["ec2.amazonaws.com"]
     }
   }
 }
