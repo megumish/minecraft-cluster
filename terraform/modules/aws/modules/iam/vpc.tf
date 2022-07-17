@@ -63,7 +63,7 @@ data "aws_iam_policy_document" "vpc_manager" {
     condition {
       test     = "ForAnyValue:StringEquals"
       variable = "ec2:ResourceTag/Environment"
-      values   = [var.project_name]
+      values   = [var.project]
     }
     resources = ["*"]
     effect    = "Allow"
