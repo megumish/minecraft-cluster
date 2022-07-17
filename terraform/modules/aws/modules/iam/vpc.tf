@@ -1,7 +1,7 @@
 # Reference: https://docs.aws.amazon.com/vpc/latest/userguide/vpc-policy-examples.html
 data "aws_iam_policy_document" "vpc_manager" {
   statement {
-    principals = {
+    principals {
       type        = "Service"
       identifiers = ["ec2.amazonaws.com"]
     }
@@ -70,7 +70,7 @@ data "aws_iam_policy_document" "vpc_manager" {
   }
 
   statement {
-    principals = {
+    principals {
       type        = "Service"
       identifiers = ["ec2.amazonaws.com"]
     }
