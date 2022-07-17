@@ -46,6 +46,10 @@ data "aws_iam_policy_document" "ec2-resource-creator-assume-role-policy" {
   statement {
     actions = ["sts:AssumeRole"]
     sid     = "Ec2ResourceCreatorAssumeRolePolicy"
+    principals {
+      type        = "Service"
+      identifiers = []
+    }
   }
 }
 
