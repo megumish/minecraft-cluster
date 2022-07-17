@@ -43,7 +43,12 @@ data "aws_iam_policy_document" "ec2_resource_creator" {
 }
 
 data "aws_iam_policy_document" "ec2-resource-creator-assume-role-policy" {
+  statement {
+    actions = ["sts:AssumeRole"]
+    sid     = "Ec2ResourceCreatorAssumeRolePolicy"
+  }
 }
+
 
 resource "aws_iam_role" "ec2_resource_creator" {
   name               = "ec2-resource-creator"
