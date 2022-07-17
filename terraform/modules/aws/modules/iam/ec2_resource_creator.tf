@@ -1,9 +1,5 @@
 data "aws_iam_policy_document" "ec2_resource_creator" {
   statement {
-    principals {
-      type        = "Service"
-      identifiers = ["ec2.amazonaws.com"]
-    }
     actions = [
       # delete ec2 resources
       "ec2:Delete*",
@@ -26,10 +22,6 @@ data "aws_iam_policy_document" "ec2_resource_creator" {
   }
 
   statement {
-    principals {
-      type        = "Service"
-      identifiers = ["ec2.amazonaws.com"]
-    }
     actions = [
       # create ec2 resources
       "ec2:Create*",
